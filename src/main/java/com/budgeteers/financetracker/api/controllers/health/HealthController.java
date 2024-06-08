@@ -16,14 +16,4 @@ public class HealthController {
         return "hello";
     }
 
-    @GetMapping("/goodbye")
-    public String goodbye() {
-        counter--;
-        return "goodbyes";
-    }
-
-    @GetMapping("/counter")
-    public int getCounter() {
-        return counter;
-    }
 }

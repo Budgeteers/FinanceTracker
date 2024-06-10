@@ -11,5 +11,4 @@ public class HealthController {
     public String hello() {
         return "hello";
     }
-
 }

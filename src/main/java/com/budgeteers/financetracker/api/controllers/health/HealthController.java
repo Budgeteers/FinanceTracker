@@ -7,23 +7,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/health")
 public class HealthController {
-
-    private static int counter = 0;
-
     @GetMapping("/hello")
     public String hello() {
-        counter++;
         return "hello";
-    }
-
-    @GetMapping("/goodbye")
-    public String goodbye() {
-        counter--;
-        return "goodbyes";
-    }
-
-    @GetMapping("/counter")
-    public int getCounter() {
-        return counter;
     }
 }

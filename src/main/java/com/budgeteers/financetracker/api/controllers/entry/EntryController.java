@@ -21,13 +21,13 @@ public class EntryController {
 
     @PostMapping("/income")
     public ResponseEntity<Void> addIncomeEntry(@RequestBody IncomeEntryRequest incomeEntryRequest) {
-        entryService.addIncomeEntry(incomeEntryRequest.getAmount());
+        entryService.addIncomeEntry(incomeEntryRequest.getAmount(), incomeEntryRequest.getCategory());
         return ResponseEntity.ok().build();
     }
 
     @PostMapping("/expense")
     public ResponseEntity<Void> addExpenseEntry(@RequestBody ExpenseEntryRequest expenseEntryRequest) {
-        entryService.addExpenseEntry(expenseEntryRequest.getAmount());
+        entryService.addExpenseEntry(expenseEntryRequest.getAmount(), expenseEntryRequest.getCategory());
         return ResponseEntity.ok().build();
     }
 

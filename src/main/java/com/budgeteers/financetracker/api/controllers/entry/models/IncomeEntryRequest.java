@@ -8,4 +8,10 @@ public class IncomeEntryRequest {
 
     @JsonProperty
     private int amount;
+
+    @JsonProperty
+    private String category;
+
+    @JsonProperty
+    private String categoryNote;
 }

@@ -24,17 +24,10 @@ public class EntryController {
     @PostMapping("/income")
     public ResponseEntity<EntryResponse> addIncomeEntry(@RequestBody IncomeEntryRequest incomeEntryRequest) {
         try {
-<<<<<<< 6-creating-notes
             entryService.addIncomeEntry(incomeEntryRequest.getAmount(), incomeEntryRequest.getCategory(), incomeEntryRequest.getCategoryNote());
             return ResponseEntity.ok().build();
         } catch (IllegalArgumentException e) {
             EntryResponse response = new EntryResponse(400,incomeEntryRequest.getCategory() + " is not a valid category");
-=======
-            entryService.addIncomeEntry(incomeEntryRequest.getAmount(), incomeEntryRequest.getCategory());
-            return ResponseEntity.ok().build();
-        } catch (IllegalArgumentException e) {
-            EntryResponse response = new EntryResponse(400,incomeEntryRequest.getCategory() + " is not a valid input");
->>>>>>> main
             return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
         }
     }
@@ -42,17 +35,10 @@ public class EntryController {
     @PostMapping("/expense")
     public ResponseEntity<EntryResponse> addExpenseEntry(@RequestBody ExpenseEntryRequest expenseEntryRequest) {
         try {
-<<<<<<< 6-creating-notes
             entryService.addExpenseEntry(expenseEntryRequest.getAmount(), expenseEntryRequest.getCategory(), expenseEntryRequest.getCategoryNote());
             return ResponseEntity.ok().build();
         } catch (IllegalArgumentException e) {
             EntryResponse response = new EntryResponse(400,expenseEntryRequest.getCategory() + " is not a valid category");
-=======
-            entryService.addExpenseEntry(expenseEntryRequest.getAmount(), expenseEntryRequest.getCategory());
-            return ResponseEntity.ok().build();
-        } catch (IllegalArgumentException e) {
-            EntryResponse response = new EntryResponse(400,expenseEntryRequest.getCategory() + " is not a valid input");
->>>>>>> main
             return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
         }
     }

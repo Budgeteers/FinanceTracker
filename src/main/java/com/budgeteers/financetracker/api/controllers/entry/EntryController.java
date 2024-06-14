@@ -24,10 +24,10 @@ public class EntryController {
     @PostMapping("/income")
     public ResponseEntity<EntryResponse> addIncomeEntry(@RequestBody IncomeEntryRequest incomeEntryRequest) {
         try {
-            entryService.addIncomeEntry(incomeEntryRequest.getAmount(), incomeEntryRequest.getCategory());
+            entryService.addIncomeEntry(incomeEntryRequest.getAmount(), incomeEntryRequest.getCategory(), incomeEntryRequest.getNotes());
             return ResponseEntity.ok().build();
         } catch (IllegalArgumentException e) {
-            EntryResponse response = new EntryResponse(400,incomeEntryRequest.getCategory() + " is not a valid input");
+            EntryResponse response = new EntryResponse(400,incomeEntryRequest.getCategory() + " is not a valid category");
             return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
         }
     }
@@ -35,10 +35,10 @@ public class EntryController {
     @PostMapping("/expense")
     public ResponseEntity<EntryResponse> addExpenseEntry(@RequestBody ExpenseEntryRequest expenseEntryRequest) {
         try {
-            entryService.addExpenseEntry(expenseEntryRequest.getAmount(), expenseEntryRequest.getCategory());
+            entryService.addExpenseEntry(expenseEntryRequest.getAmount(), expenseEntryRequest.getCategory(), expenseEntryRequest.getNotes());
             return ResponseEntity.ok().build();
         } catch (IllegalArgumentException e) {
-            EntryResponse response = new EntryResponse(400,expenseEntryRequest.getCategory() + " is not a valid input");
+            EntryResponse response = new EntryResponse(400,expenseEntryRequest.getCategory() + " is not a valid category");
             return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
         }
     }

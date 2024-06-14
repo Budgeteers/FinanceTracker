@@ -12,13 +12,14 @@ public class EntryService {
     private final List<IncomeEntry> incomeEntries = new ArrayList<>();  // TODO: Migrate to database for persistence
     private final List<ExpenseEntry> expenseEntries = new ArrayList<>();  // TODO: Migrate to database for persistence
 
-    public void addIncomeEntry(int amount, String incomeCategory) {
-            IncomeEntry entry = new IncomeEntry(amount, IncomeEntry.IncomeCategory.valueOf(incomeCategory));
-            incomeEntries.add(entry);
+
+    public void addIncomeEntry(int amount, String incomeCategory, String notes) {
+        IncomeEntry entry = new IncomeEntry(amount, IncomeEntry.IncomeCategory.valueOf(incomeCategory), notes);
+        incomeEntries.add(entry);
     }
 
-    public void addExpenseEntry(int amount, String expenseCategory) {
-        ExpenseEntry entry = new ExpenseEntry(amount, ExpenseEntry.ExpenseCategory.valueOf(expenseCategory));
+    public void addExpenseEntry(int amount, String expenseCategory, String notes) {
+        ExpenseEntry entry = new ExpenseEntry(amount, ExpenseEntry.ExpenseCategory.valueOf(expenseCategory), notes);
         expenseEntries.add(entry);
     }
 

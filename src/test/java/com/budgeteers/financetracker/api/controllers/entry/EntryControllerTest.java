@@ -1,7 +1,9 @@
 package com.budgeteers.financetracker.api.controllers.entry;
 
 import com.budgeteers.financetracker.api.controllers.entry.models.EntryResponse;
+import com.budgeteers.financetracker.api.controllers.entry.models.ExpenseEntryRequest;
 import com.budgeteers.financetracker.api.controllers.entry.models.IncomeEntryRequest;
+import com.budgeteers.financetracker.api.controllers.entry.models.ProfitResponse;
 import com.budgeteers.financetracker.services.entry.EntryService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -11,8 +13,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.http.ResponseEntity;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.mockito.ArgumentMatchers.anyInt;
-import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.Mockito.doThrow;
 import static org.mockito.Mockito.verify;
 
@@ -50,10 +51,29 @@ class EntryControllerTest {
     }
 
     @Test
-    void addExpenseEntry() {
+    void addExpenseEntrySuccess() {
+        ExpenseEntryRequest request = new ExpenseEntryRequest(200, "TRANSPORTATION", "GO BUS");
+        ResponseEntity<EntryResponse> response = entryController.addExpenseEntry(request);
+
+        verify(entryService).addExpenseEntry(200, "TRANSPORTATION", "GO BUS");
+        assertTrue(response.getStatusCode().is2xxSuccessful());
     }
 
     @Test
-    void getProfit() {
+    void addExpenseEntryException() {
+        doThrow(IllegalArgumentException.class).when(entryService).addExpenseEntry(anyInt(), anyString(), anyString());
+        ExpenseEntryRequest request = new ExpenseEntryRequest(-1, "TRANS", "HELLO");
+        ResponseEntity<EntryResponse> response = entryController.addExpenseEntry(request);
+
+        verify(entryService).addExpenseEntry(-1, "TRANS", "HELLO");
+        assertTrue(response.getStatusCode().is4xxClientError());
+    }
+
+    @Test
+    void getProfitSuccess() {
+        ResponseEntity<ProfitResponse> response = entryController.getProfit();
+
+        verify(entryService).getProfit();
+        assertTrue(response.getStatusCode().is2xxSuccessful());
     }
 }

@@ -14,4 +14,5 @@ public class ExpenseEntryRequest {
 
     @JsonProperty
     private String categoryNote;
+  
 }

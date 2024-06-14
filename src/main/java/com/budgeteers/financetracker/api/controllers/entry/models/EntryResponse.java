@@ -4,6 +4,10 @@ import lombok.Getter;
 
 @Getter
 public class EntryResponse {
+<<<<<<< 6-creating-notes
+=======
+
+>>>>>>> main
     private final int status;
     private final String message;
 

@@ -13,6 +13,6 @@ public class IncomeEntryRequest {
     private String category;
 
     @JsonProperty
-    private String categoryNote;
+    private String notes;
 
 }

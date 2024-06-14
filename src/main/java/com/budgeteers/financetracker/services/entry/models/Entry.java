@@ -6,12 +6,12 @@ import lombok.Getter;
 public abstract class Entry {
     private final int amount;
     private final Category category;
-    private final String categoryNote;
+    private final String notes;
 
-    Entry(int amount, Category category, String categoryNote) {
+    Entry(int amount, Category category, String notes) {
         this.amount = amount;
         this.category = category;
-        this.categoryNote = categoryNote;
+        this.notes = notes;
     }
 
     public interface Category {

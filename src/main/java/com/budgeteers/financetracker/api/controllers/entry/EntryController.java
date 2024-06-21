@@ -5,6 +5,8 @@ import com.budgeteers.financetracker.api.controllers.entry.models.ExpenseEntryRe
 import com.budgeteers.financetracker.api.controllers.entry.models.IncomeEntryRequest;
 import com.budgeteers.financetracker.api.controllers.entry.models.ProfitResponse;
 import com.budgeteers.financetracker.services.entry.EntryService;
+import jakarta.validation.ConstraintViolationException;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -29,6 +31,9 @@ public class EntryController {
         } catch (IllegalArgumentException e) {
             EntryResponse response = new EntryResponse(400,incomeEntryRequest.getCategory() + " is not a valid category");
             return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
+        } catch (ConstraintViolationException e) {
+            EntryResponse response = new EntryResponse(400, incomeEntryRequest.getAmount() + " is not a valid amount");
+            return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
         }
     }
 
@@ -40,6 +45,9 @@ public class EntryController {
         } catch (IllegalArgumentException e) {
             EntryResponse response = new EntryResponse(400,expenseEntryRequest.getCategory() + " is not a valid category");
             return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
+        } catch (ConstraintViolationException e) {
+            EntryResponse response2 = new EntryResponse(400, expenseEntryRequest.getAmount() + " is not a valid amount");
+            return new ResponseEntity<>(response2,HttpStatus.BAD_REQUEST);
         }
     }
 

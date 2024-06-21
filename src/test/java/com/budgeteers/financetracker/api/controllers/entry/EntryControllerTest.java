@@ -5,6 +5,7 @@ import com.budgeteers.financetracker.api.controllers.entry.models.ExpenseEntryRe
 import com.budgeteers.financetracker.api.controllers.entry.models.IncomeEntryRequest;
 import com.budgeteers.financetracker.api.controllers.entry.models.ProfitResponse;
 import com.budgeteers.financetracker.services.entry.EntryService;
+import jakarta.validation.ConstraintViolationException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -43,10 +44,10 @@ class EntryControllerTest {
     void addIncomeEntryException() {
         doThrow(IllegalArgumentException.class).when(entryService).addIncomeEntry(anyInt(), anyString(), anyString());
 
-        IncomeEntryRequest request = new IncomeEntryRequest(-1, "BUSINESS", "Sold hot dog");
+        IncomeEntryRequest request = new IncomeEntryRequest(100, "BUSINES", "Sold hot dog");
         ResponseEntity<EntryResponse> response = entryController.addIncomeEntry(request);
 
-        verify(entryService).addIncomeEntry(-1, "BUSINESS", "Sold hot dog");
+        verify(entryService).addIncomeEntry(100, "BUSINES", "Sold hot dog");
         assertTrue(response.getStatusCode().is4xxClientError());
     }
 
@@ -75,5 +76,25 @@ class EntryControllerTest {
 
         verify(entryService).getProfit();
         assertTrue(response.getStatusCode().is2xxSuccessful());
+    }
+
+    @Test
+    void addIncomeEntryExceptionConstraintViolationException() {
+        doThrow(ConstraintViolationException.class).when(entryService).addIncomeEntry(anyInt(), anyString(), anyString());
+        IncomeEntryRequest request = new IncomeEntryRequest(-100, "BUSINESS", "money from business");
+        ResponseEntity<EntryResponse> response = entryController.addIncomeEntry(request);
+
+        verify(entryService).addIncomeEntry(-100, "BUSINESS", "money from business");
+        assertTrue(response.getStatusCode().is4xxClientError());
+    }
+
+    @Test
+    void addExpenseEntryExceptionConstraintViolationException() {
+        doThrow(ConstraintViolationException.class).when(entryService).addExpenseEntry(anyInt(), anyString(), anyString());
+        ExpenseEntryRequest request = new ExpenseEntryRequest(-100, "BUSINESS", "money from business");
+        ResponseEntity<EntryResponse> response = entryController.addExpenseEntry(request);
+
+        verify(entryService).addExpenseEntry(-100, "BUSINESS", "money from business");
+        assertTrue(response.getStatusCode().is4xxClientError());
     }
 }

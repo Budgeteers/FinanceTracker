@@ -52,9 +52,6 @@ class EntryServiceTest {
         entryService.addIncomeEntry(50, "TAX_RETURN", "tax return");
         entryService.addExpenseEntry(1050, "TRANSPORTATION", "Go bus");
 
-        IncomeEntry incomeEntry = entryService.getIncomeEntries().get(0);
-        ExpenseEntry expenseEntry = entryService.getExpenseEntries().get(0);
-
         int profit = entryService.getProfit();
         assertEquals(-1000, profit);
     }

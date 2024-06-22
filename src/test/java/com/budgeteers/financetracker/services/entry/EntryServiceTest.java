@@ -1,22 +1,23 @@
 package com.budgeteers.financetracker.services.entry;
 
-import com.budgeteers.financetracker.FinanceTrackerApplication;
-import com.budgeteers.financetracker.api.controllers.entry.EntryController;
-import com.budgeteers.financetracker.services.entry.models.Entry;
 import com.budgeteers.financetracker.services.entry.models.ExpenseEntry;
 import com.budgeteers.financetracker.services.entry.models.IncomeEntry;
-import jakarta.validation.ConstraintViolationException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.validation.Errors;
+import org.springframework.validation.Validator;
 
 import static com.budgeteers.financetracker.services.entry.models.ExpenseEntry.ExpenseCategory.TRANSPORTATION;
-import static com.budgeteers.financetracker.services.entry.models.IncomeEntry.IncomeCategory.BUSINESS;
-import static com.budgeteers.financetracker.services.entry.models.IncomeEntry.IncomeCategory.TAX_RETURN;
+import static com.budgeteers.financetracker.services.entry.models.IncomeEntry.IncomeCategory.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 class EntryServiceTest {
+
+    @Autowired
+    private Validator validator;
 
     private EntryService entryService;
 
@@ -56,10 +57,10 @@ class EntryServiceTest {
         assertEquals(-1000, profit);
     }
 
-    //check that it throws exception
     @Test
     void addIncomeEntryConstraintViolationException(){
-        assertThrows(ConstraintViolationException.class, () -> entryService.addIncomeEntry(-100, "PART_TIME_EMPLOYMENT", "Chatime"));
+        Errors errors = validator.validateObject(new IncomeEntry(-100, PART_TIME_EMPLOYMENT, "Chatime"));
+        assertEquals(1, errors.getErrorCount());
     }
 
     @Test

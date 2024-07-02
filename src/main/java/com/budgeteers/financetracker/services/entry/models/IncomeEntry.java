@@ -2,7 +2,6 @@ package com.budgeteers.financetracker.services.entry.models;
 
 import org.springframework.validation.annotation.Validated;
 
-@Validated
 public class IncomeEntry extends Entry {
 
     public IncomeEntry(int amount, IncomeCategory incomeCategory, String notes) {

@@ -5,10 +5,8 @@ import lombok.Getter;
 import org.springframework.validation.annotation.Validated;
 
 @Getter
-@Validated
 public abstract class Entry {
 
-    @Positive
     private final int amount;
     private final Category category;
     private final String notes;

@@ -1,8 +1,6 @@
 package com.budgeteers.financetracker.services.entry.models;
 
-import jakarta.validation.constraints.Positive;
 import lombok.Getter;
-import org.springframework.validation.annotation.Validated;
 
 @Getter
 public abstract class Entry {

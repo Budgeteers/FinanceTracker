@@ -4,10 +4,7 @@ import com.budgeteers.financetracker.services.entry.models.ExpenseEntry;
 import com.budgeteers.financetracker.services.entry.models.IncomeEntry;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.validation.Errors;
-import org.springframework.validation.Validator;
 
 import static com.budgeteers.financetracker.services.entry.models.ExpenseEntry.ExpenseCategory.TRANSPORTATION;
 import static com.budgeteers.financetracker.services.entry.models.IncomeEntry.IncomeCategory.*;

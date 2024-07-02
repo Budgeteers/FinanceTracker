@@ -1,11 +1,7 @@
 package com.budgeteers.financetracker.api.controllers.entry;
 
-import com.budgeteers.financetracker.api.controllers.entry.models.EntryResponse;
-import com.budgeteers.financetracker.api.controllers.entry.models.ExpenseEntryRequest;
-import com.budgeteers.financetracker.api.controllers.entry.models.IncomeEntryRequest;
 import com.budgeteers.financetracker.api.controllers.entry.models.ProfitResponse;
 import com.budgeteers.financetracker.services.entry.EntryService;
-import jakarta.validation.ConstraintViolationException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -14,8 +10,6 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.http.ResponseEntity;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.mockito.ArgumentMatchers.*;
-import static org.mockito.Mockito.doThrow;
 import static org.mockito.Mockito.verify;
 
 @ExtendWith(MockitoExtension.class)

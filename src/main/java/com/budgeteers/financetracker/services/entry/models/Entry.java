@@ -4,6 +4,7 @@ import lombok.Getter;
 
 @Getter
 public abstract class Entry {
+
     private final int amount;
     private final Category category;
     private final String notes;

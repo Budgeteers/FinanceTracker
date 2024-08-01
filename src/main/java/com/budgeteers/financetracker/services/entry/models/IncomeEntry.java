@@ -2,7 +2,6 @@ package com.budgeteers.financetracker.services.entry.models;
 
 public class IncomeEntry extends Entry {
 
-
     public IncomeEntry(int amount, IncomeCategory incomeCategory, String notes) {
         super(amount, incomeCategory, notes);
     }

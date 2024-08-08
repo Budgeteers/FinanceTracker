@@ -1,6 +1,6 @@
 package com.budgeteers.financetracker.api.controllers.entry.models;
 
-import com.budgeteers.financetracker.services.entry.models.ExpenseEntry;
+import com.budgeteers.financetracker.database.models.ExpenseEntry;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.validation.constraints.Positive;
 import lombok.AllArgsConstructor;

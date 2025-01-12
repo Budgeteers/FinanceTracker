@@ -1,4 +1,4 @@
-package com.budgeteers.financetracker.api.controllers.entry.models;
+package com.budgeteers.financetracker.controller.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;

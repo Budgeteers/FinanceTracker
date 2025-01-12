@@ -1,6 +1,6 @@
-package com.budgeteers.financetracker.database.models;
+package com.budgeteers.financetracker.repository.model;
 
-import com.budgeteers.financetracker.services.entry.models.Entry;
+import com.budgeteers.financetracker.model.Entry;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.Getter;

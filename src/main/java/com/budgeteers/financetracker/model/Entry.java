@@ -1,15 +1,16 @@
-package com.budgeteers.financetracker.services.entry.models;
+package com.budgeteers.financetracker.model;
 
 import lombok.Getter;
 
 @Getter
 public abstract class Entry {
-
+    private final String id;
     private final int amount;
     private final Category category;
     private final String notes;
 
-    Entry(int amount, Category category, String notes) {
+    Entry(String id, int amount, Category category, String notes) {
+        this.id = id;
         this.amount = amount;
         this.category = category;
         this.notes = notes;

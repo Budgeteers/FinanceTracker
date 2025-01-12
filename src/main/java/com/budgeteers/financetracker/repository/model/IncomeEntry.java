@@ -1,7 +1,12 @@
-package com.budgeteers.financetracker.database.models;
+package com.budgeteers.financetracker.repository.model;
 
-import com.budgeteers.financetracker.services.entry.models.Entry;
-import jakarta.persistence.*;
+import com.budgeteers.financetracker.model.Entry;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

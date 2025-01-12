@@ -1,9 +1,8 @@
-package com.budgeteers.financetracker.services.entry.models;
+package com.budgeteers.financetracker.model;
 
 public class IncomeEntry extends Entry {
-
-    public IncomeEntry(int amount, IncomeCategory incomeCategory, String notes) {
-        super(amount, incomeCategory, notes);
+    public IncomeEntry(String id, int amount, Category category, String notes) {
+        super(id, amount, category, notes);
     }
 
     public enum IncomeCategory implements Category {

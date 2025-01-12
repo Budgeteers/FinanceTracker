@@ -1,7 +1,7 @@
-package com.budgeteers.financetracker.api.controllers.entry;
+package com.budgeteers.financetracker.controller;
 
-import com.budgeteers.financetracker.api.controllers.entry.models.ProfitResponse;
-import com.budgeteers.financetracker.services.entry.EntryService;
+import com.budgeteers.financetracker.controller.model.ProfitResponse;
+import com.budgeteers.financetracker.service.EntryService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
